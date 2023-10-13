@@ -4,7 +4,7 @@ import PromptSync from "prompt-sync";
 const prompt = PromptSync({ sigint: true })
 
 const bankomat = new Bankomat(11000);
-const card = new Card(15000, "0123");
+const card = new Card(15000, "123");
 
 bankomat.insertCard(card);
 
