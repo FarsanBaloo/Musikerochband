@@ -1,4 +1,4 @@
-export default class Bankomat {
+export default class band {
 
   cardInserted;
   validCard;

@@ -10,17 +10,6 @@ bankomat.insertCard(card);
 
 bankomat.enterPin(prompt("Skriv in pin kod - "));
 
-bankomat.enterPin(prompt("Skriv in pin kod - "));
 
 bankomat.withdrawMoney(Number(prompt("Skriv in summa du vill ta ut - ")));
-console.log(card.cardBalance);
-
-bankomat.insertCard(card);
-
-bankomat.enterPin(prompt("Skriv in pin kod - "));
-
-bankomat.withdrawMoney(Number(prompt("Skriv in summa du vill ta ut - ")));
-
-bankomat.withdrawMoney(Number(prompt("Skriv in summa du vill ta ut - ")));
-
 console.log(card.cardBalance);

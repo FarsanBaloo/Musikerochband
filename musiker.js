@@ -1,4 +1,4 @@
-export default class Card {
+export default class musiker {
 
   cardBalance;
   pin;
