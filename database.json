@@ -1,18 +1,47 @@
 [
   {
-    "name": "sdfs",
+    "name": "band",
     "info": "",
-    "yearbirth": 122,
+    "yearstarted": 2022,
+    "yearended": "",
+    "earliermembers": [],
+    "currentmembers": [
+      "m1"
+    ],
+    "json_currentmembers": []
+  },
+  {
+    "name": "m1",
+    "info": "",
+    "yearbirth": 2222,
     "currentbands": [],
     "earlierbands": [],
     "instrumentations": []
   },
   {
-    "name": "dathings",
+    "name": "bandet1",
     "info": "",
-    "yearstarted": 12234,
-    "yearended": "",
+    "yearstarted": 2222,
+    "yearended": null,
+    "currentmembers": [],
+    "earliermembers": []
+  },
+  {
+    "name": "band3",
+    "info": "",
+    "yearstarted": 2023,
+    "yearended": null,
+    "currentmembers": [],
+    "earliermembers": []
+  },
+  {
+    "name": "m2",
+    "info": "",
+    "yearstarted": null,
+    "yearended": null,
+    "currentmembers": [],
     "earliermembers": [],
-    "currentmembers": []
+    "yearbirth": 2022,
+    "instrumentations": []
   }
 ]
