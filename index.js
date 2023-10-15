@@ -1,119 +1,117 @@
-import band from "./band.js";
-import musiker from "./musiker.js";
+import Band from "./band.js";
+import Musiker from "./musiker.js";
+import fs from 'fs';
 
-const db = require(`./database.json`);
-import PromptSync from "prompt-sync";
+import promptSync from 'prompt-sync';
+const prompt = promptSync({ sigint: true });
 
-const prompt = PromptSync({ sigint: true })
+function readdatabase() {
+  let befintligdata = [];
 
+  try {
+    const datajson = fs.readFileSync('./database.json', 'utf8');
+    befintligdata = JSON.parse(datajson);
 
-
-
-function readdatabase() 
-{
-
-    let befintligdata = [];
-
-    try {
-        const datajson = fs.readFileSync("./database.json", "utf8");
-        befintligdata = JSON.parse(datajson);
-
-        if (!Array.isArray(befintligdata)) {
-            befintligdata = [];
-        }
-    } catch (err) 
-    {
+    if (!Array.isArray(befintligdata)) {
+      befintligdata = [];
     }
+  } catch (err) {
 
-    return befintligdata;
+  }
+
+  return befintligdata;
 }
 
+while (true) {
+  let database = readdatabase(); // Declare "database" with "let"
+  console.clear();
 
+  console.log('Meny Musik databasen');
+  console.log('1. Skapa ett band');
+  console.log('2. Ta bort ett band');
+  console.log('3. Skapa en musiker');
+  console.log('4. Ta bort en musiker');
+  console.log('5. Lägg till en musiker i ett band');
+  console.log('6. Ta bort en musiker från ett band');
+  console.log('7. Avsluta programmet');
 
-while(true)
-{
-    database = readdatabase();
-    console.clear()
+  let val = Number(prompt('Välj ett alternativ: '));
 
-    console.log("Meny Musik databasen");
-    
-    console.log("1. Skapa ett band");
-    console.log("2. Ta bort ett band");
-    console.log("3. Skapa en musiker");
-    console.log("4. Ta bort en musiker");
-    console.log("5. Lägg till en musiker i ett band");
-    console.log("6. Ta bort en musiker från ett band");
-    console.log("7. Avsluta programmet");
+  switch (val) {
+    // Create a band
+    case 1:
+      const nameofband = prompt('Ange namnet på bandet: ');
+      const yearstarted = Number(prompt('Ange årtalet bandet skapades: '));
+      const bandet = new Band(nameofband, yearstarted); // Use "Band" class
 
-    let val = Number(prompt("Välj ett alternativ: "));
+      // Save the object to JSON
+      database.push(bandet);
+      fs.writeFileSync('./database.json', JSON.stringify(database, null, 2));
+      break;
 
+    case 2:
+      // Remove a band from JSON
+      const bandNameToRemove = prompt('Ange namnet på bandet som ska tas bort från databasen: ');
+      // Remove the band by name
+      database = database.filter(item => item.name !== bandNameToRemove);
+      // Save the updated object to JSON
+      fs.writeFileSync('./database.json', JSON.stringify(database, null, 2));
+      break;
 
+    case 3:
+      // Create a musician
+      const nameofartist = prompt('Ange namnet på musikern: ');
+      const yearbirth = Number(prompt('Ange årtalet när artisten är född [19xx]: '));
+      const musician = new Musiker(nameofartist, yearbirth); // Use "Musiker" class
 
-    switch (val) {
-        //skappa band
-        case 1:
-            nameofband = prompt("Ange namnet på bandet: ");
-            yearstarted = Number(prompt("Ange årtalet bandet skappades: "));
-            const bandet = new band(nameofband,yearstarted);
-        
-            //spara objekt till json
-            savedatabase(database);
+      // Save the object to JSON
+      database.push(musician);
+      fs.writeFileSync('./database.json', JSON.stringify(database, null, 2));
+      break;
 
-            break;
+    case 4:
+      // Remove a musician from JSON
+      const artistNameToRemove = prompt('Ange namnet på musikern som ska tas bort från databasen: ');
+      // Remove the musician by name
+      database = database.filter(item => item.name !== artistNameToRemove);
+      // Save the updated object to JSON
+      fs.writeFileSync('./database.json', JSON.stringify(database, null, 2));
+      break;
 
+    case 5:
+      // Add an artist to a band
+      const artistNameToAdd = prompt('Ange namnet på musikern: ');
+      const bandNameToAddTo = prompt('Ange namnet på bandet: ');
+      // Find the band by name and add the member
+      const bandToAddTo = database.find(item => item.name === bandNameToAddTo);
+      if (bandToAddTo) {
+        bandToAddTo.addtocurrent(artistNameToAdd); // Use "addtocurrent" method
+      }
+      // Save the updated object to JSON
+      fs.writeFileSync('./database.json', JSON.stringify(database, null, 2));
+      break;
 
-        case 2:
-            // ta bort band ifrån json
-            nameofband = prompt("Ange namnet på bandet som skall raderas ur databasen: ");
-            //remove nameofband  from java object befintligdata
-            database.remove(nameofband)
-            //spara objekt till json
-            fs.writeFileSync("./database.json", JSON.stringify(database, null, 2));
+    case 6:
+      // Remove an artist from a band
+      const artistNameToRemoveFrom = prompt('Ange namnet på musikern: ');
+      const bandNameToRemoveFrom = prompt('Ange namnet på bandet: ');
+      // Find the band by name and remove the member
+      const bandToRemoveFrom = database.find(item => item.name === bandNameToRemoveFrom);
+      if (bandToRemoveFrom) {
+        bandToRemoveFrom.removfromcurrent(artistNameToRemoveFrom); // Use "removfromcurrent" method
+      }
+      // Save the updated object to JSON
+      fs.writeFileSync('./database.json', JSON.stringify(database, null, 2));
+      break;
 
-            break;
+    case 7:
+      // Exit the program
+      process.exit();
+      break;
 
-        case 3:
-            // skapa en musiker
-            nameofartist = prompt("Ange namnet på musikern: ");
-            yearbirth = Number(prompt("Ange årtalet när artisten är född [19xx]: "));
-            const musician = new musiker(nameofartist,yearbirth);
+    default:
+      console.log('Ogiltigt menyval, försök igen');
+      break;
+  }
+}
 
-            // spara objekt till json
-            database.push(musician);
-            fs.writeFileSync("./database.json", JSON.stringify(datbase, null, 2));
-            break;
-
-        case 4:
-            // ta bort musiker ifrån json
-            nameofartist = prompt("Ange namnet på musikern som skall raderas ur databasen: ");
-            //remove nameofartist  from java object befintligdata
-            database.remove(nameofartist)
-            //spara objekt till json
-            fs.writeFileSync("./database.json", JSON.stringify(database, null, 2));
-        
-            break;
-        
-        case 5:
-            // lägg till artist i band  
-            nameofartist = prompt("Ange namnet på musikern: ");
-            nameofband = prompt("Ange namnet på bandet: ");
-            database.band(nameofband).addmember(nameofartist);
-            break;
-
-        case 6:
-            // ta bort artist ifrån band
-            nameofartist = prompt("Ange namnet på musikern: ");
-            nameofband = prompt("Ange namnet på bandet: ");
-            database.band(nameofband).addmember(nameofartist);
-            break;
-
-        case 7:
-            // avsluta programmet
-            break;
-
-        default:
-            console.log("Ogiltigt meny val, försök igen");
-            break;
-
-        }
-    }

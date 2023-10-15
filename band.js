@@ -1,5 +1,4 @@
-export default class band {
-
+export default class Band {
   name;
   info;
   yearstarted;
@@ -10,36 +9,31 @@ export default class band {
   currentmembers;
 
   constructor(nameofband, yearstarted) {
-   this.name = nameofband;
-   this.info = '';
-   this.yearstarted = yearstarted;  //int
-   this.yearended = none;           //int
-   
-   
-   this.currentmembers = [];       
-   this.earliermembers = [];  
+    this.name = nameofband;
+    this.info = '';
+    this.yearstarted = yearstarted;  // int
+    this.yearended = '';           // int
+    this.currentmembers = [];
+    this.earliermembers = [];
   }
 
-  changeinfo() {
+  changeinfo(info) {
     this.info = info;
   }
 
-  ended(year)
-  {
+  ended(year) {
     this.yearended = year;
   }
 
-
-  addtocurrent(member) 
-  {
-    this.members.push(member);
+  addtocurrent(member) {
+    this.currentmembers.push(member);
   }
 
-  removfromcurrent(member) 
-  {
-    this.members.pop(member);
-    this.earliermembers.push(member);
+  removfromcurrent(member) {
+    const index = this.currentmembers.indexOf(member);
+    if (index !== -1) {
+      this.currentmembers.splice(index, 1);
+      this.earliermembers.push(member);
+    }
   }
-
-
 }

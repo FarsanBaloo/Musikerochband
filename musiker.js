@@ -9,7 +9,7 @@ export default class musiker {
 
   constructor(name, yearbirth) {
     this.name = name;
-    this.info = info;
+    this.info = '';
     this.yearbirth = yearbirth;
     this.currentbands = [];
     this.earlierbands = []
