@@ -1,23 +1,74 @@
 export default class musiker {
 
-  cardBalance;
-  pin;
+  name;
+  info;
+  yearbirth;
+  currentbands;
+  earlierbands;
+  instrumentations;
 
-  constructor(cardBalance, pin) {
-    this.cardBalance = cardBalance
-    this.pin = pin;
+  constructor(name, yearbirth) {
+    this.name = name;
+    this.info = info;
+    this.yearbirth = yearbirth;
+    this.currentbands = [];
+    this.earlierbands = []
+    this.instrumentations = [];
+  
   }
 
-  comparePin(inputPin) {
-    if (inputPin === this.pin) {
-      return true;
-    } else {
-      return false;
-    }
+  addband(band) {
+    this.currentbands.push(band);
   }
 
-  getCardBalance() {
-    return this.cardBalance;
+  addinstrument(instrument) {
+    this.instrumentations.push(instrument);
   }
+
+  addearlierband(band) {
+    this.earlierbands.push(band);
+  }
+
+  getname() {
+    return this.name;
+  }
+
+  getinfo() {
+    return this.info;
+  }
+
+  getyearbirth() {
+    return this.yearbirth;
+  }
+
+  getcurrentband() {
+    return this.currentbands;
+  }
+
+  getinstrumentation() {
+    return this.instrumentations;
+  }
+
+  getearlierband() {
+    return this.earlierbands;
+  }
+
+  setname(name) {
+    this.name = name;
+  }
+
+  setinfo(info) {
+    this.info = info;
+  }
+
+  setyearbirth(yearbirth) {
+    this.yearbirth = yearbirth;
+  }
+
+  setcurrentband(currentband) {
+    this.currentbands = currentband;
+    
+  }
+
 
 }
