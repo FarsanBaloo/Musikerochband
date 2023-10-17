@@ -1,3 +1,22 @@
 [
-
+  {
+    "Name": "asd",
+    "Info": "Band",
+    "Yearstarted": 222,
+    "Yearended": "",
+    "Current": [
+      "sdfsdf"
+    ],
+    "Earlier": []
+  },
+  {
+    "Name": "sdfsdf",
+    "Info": "Musiker",
+    "Yearbirth": 333,
+    "Instrument": [],
+    "Current": [
+      "asd"
+    ],
+    "Earlier": []
+  }
 ]
