@@ -65,15 +65,18 @@ export class Musiker {
       // Skapar ett objekt med musikerns egenskaps information. 
     // Används när vi ska skicka in till "databasen.json". 
 
+    // Skapar ett objekt med bandets egenskaps information. 
+    // Används när vi ska skicka in till "databasen.json". 
     datamusikerInfo() {
         return {
           Name: this.#name,
           Info: this.#info,
           Yearbirth: this.#yearbirth,
           Instrument: this.#instrumentations,
-          Nuvarandemedlem: this.#current,
-          Tidigaremedlem: this.#earlier,
-        
-        };
+          Current: this.#current,
+          Earlier: this.#earlier
+
+        }
+
       }
     }

@@ -1,14 +1,10 @@
-<<<<<<< HEAD
-=======
 
 import fs from 'fs';
->>>>>>> parent of a7315e6 (..)
 import Personer from "./persons.js";
 
 import promptSync from 'prompt-sync';
 const prompt = promptSync({ sigint: true });
 
-<<<<<<< HEAD
 // När vi skapar ett nytt objekt kommer constructor att
 // läsa in musikerna och banden från JSON-filen. 
 const personLista = new Personer();
@@ -17,23 +13,10 @@ function remove() {
   personLista.skrivUtPersoner();
   const val = prompt("Ange numret för den musiker eller band du vill tabort ->");
 
-=======
-// När vi skapar ett nytt Hundar-objekt kommer constructor att
-// läsa in hundarna från JSON-filen. 
-const personLista = new Personer();
-
-
-
-function removePerson() {
-  personLista.skrivUtPersoner(); // Skriver ut listan på alla hundar med index i början.
-  const val = prompt("Skriv in index för det du vill tabort ->");
-
->>>>>>> parent of a7315e6 (..)
   if (Number(val).toString() === "NaN") { // Kollar så att val går att parsa till ett nummer.
     console.log("Måste skriva in ett tal!");
   }
   if (val <= personLista.getLength() && val >= 1) {
-<<<<<<< HEAD
     personLista.removePersonFromList(Number(val) - 1);  // Tar det inskrivna valet och minskar med 1. (för arrays index börjar på 0)
   } else {
     console.log(`Talet måste vara mellan 1 och ${personLista.getLength()}`);
@@ -47,21 +30,6 @@ while (run) {
   console.log(''); 
   console.log('Meny Musik och band databasen');
   console.log(''); 
-=======
-    hundLista.removePersonFromList(Number(val) - 1); // Tar det inskrivna valet och minskar med 1. (för arrays index börjar på 0)
-  } else {
-    console.log(`Talet måste vara mellan 1 och ${personLista.getLength()}`);
-  }
-}
-
-
-while (true) {
-  console.clear();
-
-  console.log('Meny Musik databasen');
-  console.log(''); // Empty line
-
->>>>>>> parent of a7315e6 (..)
   console.log('1. Skapa ett band');
   console.log('2. Ta bort ett band');
   console.log('3. Skapa en musiker');
@@ -79,7 +47,6 @@ while (true) {
   
     case "1": // Lägg till ett band i databasen
       const nameofband = prompt('Ange namnet på bandet: ');
-<<<<<<< HEAD
       const yearstarted = Number(prompt('Ange årtalet som bandet skappades: '));
       if (!isNaN(yearstarted)) {
         personLista.addBandToList(nameofband, yearstarted);
@@ -134,20 +101,11 @@ while (true) {
       } else {
         console.log('Ogiltigt nummer utför listans giltiga område ');
       }
-=======
-      const yearstarted = Number(prompt('Ange årtalet bandet skapades: '));
-
-      personLista.addBandToList(nameofband, yearstarted);
-
-      break;
-
->>>>>>> parent of a7315e6 (..)
     
     case "2":   // Ta bort ett band i databasen
     removePerson();
     break;
 
-<<<<<<< HEAD
     case "7": // Skriv ut inlaggda musiker och band
       console.clear()
       personLista.skrivUtPersoner();
@@ -157,13 +115,6 @@ while (true) {
     case "8": // Avsluta programmet
       run = false;
 
-=======
-    
-    case 3: // Skapa en musiker i databasen
-
-    const nameofartist = prompt('Ange namnet på musikern: ');
-    const yearbirth = Number(prompt('Ange årtalet när artisten är född [19xx]: '));
->>>>>>> parent of a7315e6 (..)
 
     personLista.addMusikerToList(nameofartist, yearbirth);
    
