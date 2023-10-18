@@ -1,6 +1,5 @@
 [
   {
-    "Namn": "asd",
     "Info": "Band",
     "Yearstarted": 222,
     "Yearended": "",
@@ -8,39 +7,39 @@
     "Tidigaremedlem": []
   },
   {
-    "Namn": "sdfsdf",
-    "Info": "Musiker",
-    "Yearbirth": 333,
-    "Instrument": [],
-    "Nuvarandemedlem": [],
-    "Tidigaremedlem": []
-  },
-  {
-    "Namn": "sda",
     "Info": "Band",
-    "Yearstarted": 121,
+    "Yearstarted": 2022,
     "Yearended": "",
     "Nuvarandemedlemar": [],
     "Tidigaremedlem": []
   },
   {
-    "Namn": "bandet",
-    "Info": "Band",
-    "Yearstarted": 2232,
-    "Yearended": "",
-    "Nuvarandemedlemar": [
-      "killen"
-    ],
+    "Info": "Musiker",
+    "Yearbirth": 2021,
+    "Instrument": [],
+    "Nuvarandemedlem": [],
     "Tidigaremedlem": []
   },
   {
-    "Namn": "killen",
     "Info": "Musiker",
-    "Yearbirth": 241,
+    "Yearbirth": 2023,
     "Instrument": [],
-    "Nuvarandemedlem": [
-      "bandet"
-    ],
+    "Nuvarandemedlem": [],
+    "Tidigaremedlem": []
+  },
+  {
+    "Info": "Band",
+    "Yearstarted": 22,
+    "Yearended": "",
+    "Nuvarandemedlemar": [],
+    "Tidigaremedlem": []
+  },
+  {
+    "Namn": "",
+    "Info": "Band",
+    "Yearstarted": 0,
+    "Yearended": "",
+    "Nuvarandemedlemar": [],
     "Tidigaremedlem": []
   }
 ]

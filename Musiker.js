@@ -67,7 +67,7 @@ export class Musiker {
 
     datamusikerInfo() {
         return {
-          Namn: this.#name,
+          Name: this.#name,
           Info: this.#info,
           Yearbirth: this.#yearbirth,
           Instrument: this.#instrumentations,

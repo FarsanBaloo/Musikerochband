@@ -1,4 +1,3 @@
-import fs from 'fs';
 import Personer from "./persons.js";
 import promptSync from 'prompt-sync';
 
@@ -12,18 +11,19 @@ function remove() {
   personLista.skrivUtPersoner();
   const val = prompt("Ange numret för den musiker eller band du vill tabort ->");
 
-  if (isNaN(Number(val))) { 
-    console.log("Du måste ange ett nummer!");
-    return;
+  if (Number(val).toString() === "NaN") { // Kollar så att val går att parsa till ett nummer.
+    console.log("Måste skriva in ett tal!");
   }
   if (val <= personLista.getLength() && val >= 1) {
-    personLista.removePersonFromList(Number(val) - 1); 
+    personLista.removePersonFromList(Number(val) - 1);  // Tar det inskrivna valet och minskar med 1. (för arrays index börjar på 0)
   } else {
-    console.log(`Numret måste vara mellan 1 - ${personLista.getLength()}`);
+    console.log(`Talet måste vara mellan 1 och ${personLista.getLength()}`);
+    prompt('Tryck enter för att återgå till menyn')
+
   }
 }
-
-while (true) {
+let run = true;
+while (run) {
   console.clear()
   console.log(''); 
   console.log('Meny Musik och band databasen');
@@ -50,11 +50,13 @@ while (true) {
         personLista.addBandToList(nameofband, yearstarted);
       } else {
         console.log("Ogiltigt inmatning av år ange ett tal.");
+        prompt('Tryck enter för att återgå till menyn')
       }
       break;
 
     case "2": // Ta bort ett band
       remove();
+
       break;
 
     case "3": // Skapa en musiker
@@ -64,6 +66,7 @@ while (true) {
         personLista.addMusikerToList(nameofartist, yearbirth);
       } else {
         console.log("Ogiltigt inmatning av år ange ett tal.");
+        prompt('Tryck enter för att återgå till menyn')
       }
       break;
 
@@ -101,12 +104,13 @@ while (true) {
 
     case "7": // Skriv ut inlaggda musiker och band
       console.clear()
-      personLista.skrivUtPersoner(); // 
+      personLista.skrivUtPersoner();
       prompt('Tryck enter för att återgå till menyn')
       break;
 
     case "8": // Avsluta programmet
-      process.exit(0);
+      run = false;
+
 
     default:
       console.log('Ogiltigt meny vall försök igen!');
