@@ -73,12 +73,12 @@ export class Band {
     // Används när vi ska skicka in till "databasen.json". 
     databandInfo() {
     return {
-        Name: this.#name,
+        Namn: this.#name,
         Info: this.#info,
         Yearstarted: this.#yearstarted,
         Yearended: this.#yearended,
-        Current: this.#current,
-        Earlier: this.#earlier,
+        Nuvarandemedlemar: this.#current,
+        Tidigaremedlem: this.#earlier,
      
     };
     }

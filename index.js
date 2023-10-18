@@ -4,22 +4,22 @@ import promptSync from 'prompt-sync';
 
 const prompt = promptSync({ sigint: true });
 
-// When we create a new Personer object, the constructor will
-// read in the persons from the JSON file.
+// När vi skapar ett nytt objekt kommer constructor att
+// läsa in musikerna och banden från JSON-filen. 
 const personLista = new Personer();
 
 function remove() {
   personLista.skrivUtPersoner();
-  const val = prompt("Enter the index of the one you want to remove ->");
+  const val = prompt("Ange numret för den musiker eller band du vill tabort ->");
 
   if (isNaN(Number(val))) { 
-    console.log("You must enter a number!");
+    console.log("Du måste ange ett nummer!");
     return;
   }
   if (val <= personLista.getLength() && val >= 1) {
     personLista.removePersonFromList(Number(val) - 1); 
   } else {
-    console.log(`The number must be between 1 and ${personLista.getLength()}`);
+    console.log(`Numret måste vara mellan 1 - ${personLista.getLength()}`);
   }
 }
 
@@ -71,7 +71,7 @@ while (true) {
       remove();
       break;
 
-      case "5": // Lägg till en musiker till ett band
+    case "5": // Lägg till en musiker till ett band
       personLista.skrivUtPersoner(); 
       const musikerIndex = Number(prompt('Ange numret för musikanten i listan som skall läggas till ett band: ')) - 1; // we subtract 1 because array indexes start from 0
       const bandIndex = Number(prompt('Ange numret som bandet har i listan: ')) - 1; 
@@ -84,8 +84,6 @@ while (true) {
       }
       prompt('Tryck enter för att återgå till menyn')
       break;
-
-
 
     case "6": // Ta bort en musiker ifrån ett band
       personLista.skrivUtPersoner(); //
@@ -102,6 +100,7 @@ while (true) {
       break;
 
     case "7": // Skriv ut inlaggda musiker och band
+      console.clear()
       personLista.skrivUtPersoner(); // 
       prompt('Tryck enter för att återgå till menyn')
       break;
