@@ -1,5 +1,6 @@
 import fs from "fs";
-import {Band, Musiker} from "./person.js";
+import {Band} from "./Band.js";
+import {Musiker} from "./Musiker.js";
 
 
 export default class Personer
