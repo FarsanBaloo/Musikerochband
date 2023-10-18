@@ -1,29 +1,30 @@
-import fs from 'fs';
 import Personer from "./persons.js";
 import promptSync from 'prompt-sync';
 
 const prompt = promptSync({ sigint: true });
 
-// When we create a new Personer object, the constructor will
-// read in the persons from the JSON file.
+// När vi skapar ett nytt objekt kommer constructor att
+// läsa in musiker och band från JSON-filen. 
 const personLista = new Personer();
 
 function remove() {
   personLista.skrivUtPersoner();
   const val = prompt("Enter the index of the one you want to remove ->");
 
-  if (isNaN(Number(val))) { 
-    console.log("You must enter a number!");
-    return;
+  if (Number(val).toString() === "NaN") { // Kollar så att val går att parsa till ett nummer.
+    console.log("Måste skriva in ett tal!");
   }
   if (val <= personLista.getLength() && val >= 1) {
-    personLista.removePersonFromList(Number(val) - 1); 
+    personLista.removePersonFromList(Number(val) - 1); // Tar det inskrivna valet och minskar med 1. (för arrays index börjar på 0)
   } else {
     console.log(`The number must be between 1 and ${personLista.getLength()}`);
   }
 }
 
-while (true) {
+
+let run = true;
+
+while (run) {
   console.clear()
   console.log(''); 
   console.log('Meny Musik och band databasen');
@@ -40,6 +41,7 @@ while (true) {
 
   let val = prompt('Välj ett meny vall: ');
 
+ 
   switch (val) {
 
 
@@ -107,10 +109,12 @@ while (true) {
       break;
 
     case "8": // Avsluta programmet
-      process.exit(0);
+      run = false;
+      break;
 
     default:
       console.log('Ogiltigt meny vall försök igen!');
+      prompt('Tryck enter för att återgå till menyn')
       break;
   }
 }

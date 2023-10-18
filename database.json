@@ -1,21 +1,29 @@
 [
   {
-    "Name": "asd",
+    "Name": "rille",
     "Info": "Band",
     "Yearstarted": 222,
     "Yearended": "",
     "Current": [
-      "sdfsdf"
+      "musiker1"
     ],
     "Earlier": []
   },
   {
-    "Name": "sdfsdf",
+    "Name": "rill2",
+    "Info": "Band",
+    "Yearstarted": 2022,
+    "Yearended": "",
+    "Current": [],
+    "Earlier": []
+  },
+  {
+    "Name": "musiker1",
     "Info": "Musiker",
-    "Yearbirth": 333,
+    "Yearbirth": 2021,
     "Instrument": [],
     "Current": [
-      "asd"
+      "rille"
     ],
     "Earlier": []
   }

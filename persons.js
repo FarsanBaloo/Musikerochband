@@ -1,6 +1,6 @@
 import fs from "fs";
-import { Band } from "./Band.js";
-import { Musiker } from "./Musiker.js";
+import Band from "./Band.js";
+import Musiker from "./Musiker.js";
 
 export default class Personer {
   #persons = []; // Listan som håller alla musiker och band
@@ -13,11 +13,11 @@ export default class Personer {
     return this.#persons;
   }
 
-  // Reads all database from "database.json".
+// Läser in alla musiker och band från "database.json". 
   #fetchData() {
     const jsonString = fs.readFileSync("database.json");
     const data = JSON.parse(jsonString);
-
+   // Populerar #Lista med musiker och band -objekt, då kommer vi få tillgång till alla metoder i klassen.
     for (let i = 0; i < data.length; i++) {
       if (data[i].Info === "Band") {
         this.#persons.push(new Band(data[i].Name, data[i].Yearstarted, data[i].Yearended));
@@ -26,7 +26,7 @@ export default class Personer {
       }
     }
   }
-
+  //Skriver ut index och hund-objektens namn 
   skrivUtPersoner() {
     for (let i = 0; i < this.#persons.length; i++) {
       console.log(`${i + 1}. ${this.#persons[i].name}`);
@@ -35,12 +35,12 @@ export default class Personer {
 
   addMusikerToList(namemusiker, yearbirth) {
     this.#persons.push(new Musiker(namemusiker, yearbirth)); 
-    this.#updateJsonFile(); 
+    this.#updateJsonFile(); // Uppdaterar "databasen.json". 
   }
 
   addBandToList(nameband, yearstarted) {
     this.#persons.push(new Band(nameband, yearstarted)); 
-    this.#updateJsonFile(); 
+    this.#updateJsonFile(); // Uppdaterar "databasen.json".
   }
 
   addMusikerToBand(musikerIndex, bandIndex) {
@@ -54,32 +54,31 @@ export default class Personer {
       if (alreadyInBand) {
         console.log(`${musiker.name} är redan medlem i ett band ${band.name}.`);
       } else {
-        band.current.push(musiker.name); // Add the musician to the band's list of members
-        musiker.current.push(band.name); // Reflect that the musician is part of this band
+        band.current.push(musiker.name); 
+        musiker.current.push(band.name); 
         console.log(`${musiker.name} har laggt till i ${band.name}.`);
-        this.#updateJsonFile(); // Update the JSON file with the new data
+        this.#updateJsonFile(); 
       }
     } else {
       console.log('Ogiltigt vall');
     }
   
-
-    // Add the musician to the band's current members
+    // Lägger till musiker i current band
     if (!band.current.includes(musiker.name)) {
       band.current.push(musiker.name);
     }
 
-    // Add the band to the musician's current band
+    // Lägger till bandet i musikerns current band
     if (!musiker.current.includes(band.name)) {
       musiker.current.push(band.name);
     }
 
-    this.#updateJsonFile();
+    this.#updateJsonFile(); // Uppdaterar "Hundar.json".
   }
 
   removePersonFromList(index) {
     this.#persons.splice(index, 1); 
-    this.#updateJsonFile(); // Updates "database.json".
+    this.#updateJsonFile(); // Uppdaterar "Hundar.json".
   }
 
   getLength() {
@@ -87,9 +86,11 @@ export default class Personer {
   }
 
   #updateJsonFile() {
-    let tempList = [];
+    let tempList = []; // Skapar en temporär lista som ska sparas i "databasen.json".
 
     for (let i = 0; i < this.#persons.length; i++) {
+      // Använder dataInfo som ger mig ett nytt objekt med alla musiker och band objektet egenskaps information.
+      // Om vi sparar musiker och band-objektet direkt, kommer inte informationen från privata egenskaper med.
       if (this.#persons[i] instanceof Band) {
         tempList.push(this.#persons[i].databandInfo());
       } else if (this.#persons[i] instanceof Musiker) {
