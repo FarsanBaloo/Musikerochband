@@ -1,30 +1,3 @@
 [
-  {
-    "Name": "rille",
-    "Info": "Band",
-    "Yearstarted": 222,
-    "Yearended": "",
-    "Current": [
-      "musiker1"
-    ],
-    "Earlier": []
-  },
-  {
-    "Name": "rill2",
-    "Info": "Band",
-    "Yearstarted": 2022,
-    "Yearended": "",
-    "Current": [],
-    "Earlier": []
-  },
-  {
-    "Name": "musiker1",
-    "Info": "Musiker",
-    "Yearbirth": 2021,
-    "Instrument": [],
-    "Current": [
-      "rille"
-    ],
-    "Earlier": []
-  }
+
 ]
